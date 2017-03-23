@@ -1,13 +1,20 @@
 package com.findr.model;
 
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * Created by Rachid, Mohamed Yassine on 2017-03-20.
  */
+@Document(collection = "Users")
 public class User {
+
     private String firstName;
     private String lastName;
     private String sexe;
     private String intererested;
+    @Id
     private String email;
     private String phone;
     private int age ;

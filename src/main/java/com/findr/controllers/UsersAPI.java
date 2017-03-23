@@ -1,19 +1,28 @@
 package com.findr.controllers;
-
 import com.findr.model.User;
+import com.findr.repositories.UserRepo;
+import com.findr.util.UsersGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yassine on 2017-03-20.
  */
 @RestController
-public class Users {
+@RequestMapping("/")
+public class UsersAPI {
+
+    @Autowired
+    private UserRepo userRepo;
 
     @RequestMapping
-    @CrossOrigin(origins = "http://localhost:4200")
-    public User[] getUser(){
+    @CrossOrigin(origins = "*")
+    public List<User> getUser(){
 
         User utilisateur1 =
                 new User("Caroline","leblanc","F","M","caro@gmail.com","514 236 9823",
@@ -31,8 +40,22 @@ public class Users {
                 new User("Maitre","Yoda","M","F","yoda@gmail.com","XER 2K3 3243",
                         25,"Looking for nice women.","secret123");
 
-        User[] users= {utilisateur1,utilisateur2,utilisateur3,utilisateur4,utilisateur5};
+        List<User> users = new ArrayList<User>();
+
+        users.add(utilisateur1);
+        users.add(utilisateur2);
+        users.add(utilisateur3);
+        users.add(utilisateur4);
+        users.add(utilisateur5);
 
         return users;
+    }
+
+    @RequestMapping("/create")
+    @CrossOrigin(origins = "*")
+    public String creatUsers(){
+        UsersGenerator usersGenerator = new UsersGenerator();
+        usersGenerator.createFiveUser();
+        return "The users have been created.";
     }
 }
