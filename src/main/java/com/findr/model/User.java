@@ -3,6 +3,10 @@ package com.findr.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import static org.springframework.security.config.Elements.PASSWORD_ENCODER;
 
 /**
  * Created by Rachid, Mohamed Yassine on 2017-03-20.
@@ -10,16 +14,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Users")
 public class User {
 
+    @Id
+    private String email;
     private String firstName;
     private String lastName;
     private String sexe;
     private String intererested;
-    @Id
-    private String email;
     private String phone;
     private int age ;
     private String description ;
-    private String password ;
+
+    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+    private String password;
 
     public User(String firstName, String lastName, String sexe, String intererested, String email, String phone, int age, String description, String password) {
         this.firstName = firstName;
@@ -30,7 +36,7 @@ public class User {
         this.phone = phone;
         this.age = age;
         this.description = description;
-        this.password = password;
+        this.setPassword(password);
     }
 
     public User() {
@@ -105,6 +111,6 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = PASSWORD_ENCODER.encode(password);
     }
 }
