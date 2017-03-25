@@ -57,29 +57,29 @@ public class DataController {
 
         users.add(
                 new User("George", "Tremblay", "M", "F", "George@gmail.com", "514 233 0983",
-                        23, "Looking for nice women.", "secret123"
+                        23, "Looking for nice women.", "Jibotro"
                 ));
 
         users.add(
                 new User("Kreg", "Jiga", "M", "F", "Kregy11@gmail.com", "514 233 0233",
-                        25, "Looking for nice women.", "secret123"
+                        25, "Looking for nice women.", "cassendra"
                 ));
         users.add(
                 new User("Zac", "Lacroche", "M", "F", "lacromi@gmail.com", "514 223 3243",
-                        32, "Looking for nice women.", "secret123"
+                        32, "Looking for nice women.", "lacro12"
                 ));
         users.add(
                 new User("Maitre", "Yoda", "M", "F", "yoda@gmail.com", "XER 2K3 3243",
-                        28, "Looking for nice women.", "secret123"
+                        28, "Looking for nice women.", "starswars"
                 ));
         users.add(
                 new User("Jeff", "Gay", "M", "F", "lgbt432@gmail.com", "450 324 2341",
-                        26, "Looking for nice men", "secret123"
+                        26, "Looking for nice men", "Namibo"
                 ));
 
         users.add(
                 new User("Jerry", "Gayy", "M", "F", "pro-choice@gmail.com", "514 234 5423",
-                        26, "Looking for nice men", "secret123"
+                        26, "Looking for nice men", "Gotomiko"
                 ));
 
         userRepo.save(users);
