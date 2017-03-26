@@ -15,6 +15,7 @@ import java.util.List;
  */
 @RestController
 @Secured(value="ROLE_USER")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/")
 public class UsersAPI {
 

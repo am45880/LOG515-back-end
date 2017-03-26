@@ -15,10 +15,10 @@ import java.util.List;
  * Created by Yassine on 2017-03-24.
  */
 @RestController
-@CrossOrigin
+//@CrossOrigin(origins = "http://localhost:4200/")
 @Secured(value="ROLE_USER")
 @RequestMapping("/data")
-public class DataController {
+public class Data {
 
     @Autowired
     private UserRepo userRepo;
