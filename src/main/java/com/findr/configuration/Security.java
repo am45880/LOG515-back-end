@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  */
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled=true)
+@EnableGlobalMethodSecurity(securedEnabled=true)
 public class Security extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -48,8 +48,16 @@ public class Security extends WebSecurityConfigurerAdapter {
                 permitAll().anyRequest().authenticated();
 
         http
+
+                // on authaurise les accée sur les ressources css , js et images qui est authentifier
+                .authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .anyRequest()
+                .authenticated();
+
+        http
                 .csrf().disable().cors().disable()
-                .formLogin().failureUrl("/auth/connection_echoue").defaultSuccessUrl("/auth/connection_reussite").loginPage("/auth/login").permitAll()
+                .formLogin().failureUrl("/auth/connection_echoue").successForwardUrl("/auth/connection_reussite").loginPage("/auth/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout")).logoutSuccessUrl("/auth/logout_success/").deleteCookies("remember-me").permitAll()
                 .and()

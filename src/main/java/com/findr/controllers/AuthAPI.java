@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Yassine on 2017-03-25.
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 //@Secured(value="ROLE_USER")
 @RequestMapping("/auth")
 public class AuthAPI {

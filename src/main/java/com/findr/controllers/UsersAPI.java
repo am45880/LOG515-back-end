@@ -3,6 +3,7 @@ import com.findr.model.User;
 import com.findr.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,8 @@ import java.util.List;
  */
 @RestController
 @Secured(value="ROLE_USER")
-//@CrossOrigin(origins = "http://localhost:4200")
+//@PreAuthorize("hasAuthority('ROLE_USER')")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/")
 public class UsersAPI {
 
