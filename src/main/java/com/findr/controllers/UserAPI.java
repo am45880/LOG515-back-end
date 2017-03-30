@@ -20,7 +20,7 @@ public class UserAPI {
     @Autowired
     private UserRepo userRepo;
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value="/new",method = RequestMethod.POST)
     public void insertNewUser(@ModelAttribute User user){
         userRepo.save(user);
     }
@@ -53,49 +53,49 @@ public class UserAPI {
 
         users.add(
                 new User("Caroline", "leblanc", "F", "M","caromix" , "caro@gmail.com", "514 236 9823",
-                        31, "I am beautiful girl looking for nice men.", "secret123")
+                        "31", "I am beautiful girl looking for nice men.", "secret123")
         );
 
         users.add(
                 new User("Christina", "Blanchette", "F", "M","christo", "christi@gmail.com", "438 236 0382",
-                        38, "I am beautiful girl looking for nice men.", "secret123")
+                        "38", "I am beautiful girl looking for nice men.", "secret123")
         );
 
         users.add(
                 new User("Sabrina", "Ouelette", "F", "M", "sabrinos","wawa.sab@gmail.com", "450 324 3418",
-                        27, "I am beautiful girl looking for nice men.", "secret123")
+                        "27", "I am beautiful girl looking for nice men.", "secret123")
         );
 
         users.add(
                 new User("Yell", "Fantas", "F", "M", "yell23", "yello@gmail.com", "450 324 3418",
-                        29, "I am beautiful girl looking for nice men.", "secret123")
+                        "29", "I am beautiful girl looking for nice men.", "secret123")
         );
 
         users.add(
                 new User("George", "Tremblay", "M", "F", "george23","George@gmail.com", "514 233 0983",
-                        23, "Looking for nice women.", "Jibotro"
+                        "23", "Looking for nice women.", "Jibotro"
                 ));
 
         users.add(
                 new User("Kreg", "Jiga", "M", "F", "kreguy23","Kregy11@gmail.com", "514 233 0233",
-                        25, "Looking for nice women.", "cassendra"
+                        "25", "Looking for nice women.", "cassendra"
                 ));
         users.add(
                 new User("Zac", "Lacroche", "M", "F", "zacovich","lacromi@gmail.com", "514 223 3243",
-                        32, "Looking for nice women.", "lacro12"
+                        "32", "Looking for nice women.", "lacro12"
                 ));
         users.add(
                 new User("Maitre", "Yoda", "M", "F","yoda123", "yoda@gmail.com", "XER 2K3 3243",
-                        28, "Looking for nice women.", "starswars"
+                        "28", "Looking for nice women.", "starswars"
                 ));
         users.add(
                 new User("Jeff", "Gay", "M", "F", "jeff241","lgbt432@gmail.com", "450 324 2341",
-                        26, "Looking for nice men", "Namibo"
+                        "26", "Looking for nice men", "Namibo"
                 ));
 
         users.add(
                 new User("Jerry", "Gayy", "M", "F","jerry3876", "pro-choice@gmail.com", "514 234 5423",
-                        26, "Looking for nice men", "Gotomiko"
+                        "26", "Looking for nice men", "Gotomiko"
                 ));
 
         userRepo.save(users);

@@ -18,13 +18,13 @@ public class User {
     private String interested;
     private String snapchat;
     private String phone;
-    private int age ;
+    private String age ;
     private String description ;
 
 //    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
     private String password;
 
-    public User( String firstName, String lastName, String sex, String interested,String snapchat,String email, String phone, int age, String description, String password) {
+    public User( String firstName, String lastName, String sex, String interested,String snapchat,String email, String phone, String age, String description, String password) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -96,11 +96,11 @@ public class User {
         this.phone = phone;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
