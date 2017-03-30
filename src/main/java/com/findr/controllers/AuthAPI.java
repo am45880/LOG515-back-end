@@ -1,24 +1,31 @@
 package com.findr.controllers;
 
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+
+import com.findr.model.User;
+import com.findr.repositories.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Yassine on 2017-03-25.
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-//@Secured(value="ROLE_USER")
 @RequestMapping("/auth")
 public class AuthAPI {
 
+    @Autowired
+    UserRepo userRepo;
 
-    @RequestMapping(value="/login")
-    public String login(){
-        return "login";
+    @RequestMapping(value="/login",method = RequestMethod.POST)
+    public String login(@RequestParam String email, @RequestParam String password){
+
+        User user = userRepo.findByEmail(email);
+        if( user != null && user.getPassword().equals(password)){
+            return "success";
+        }else {
+            return "fail";
+        }
     }
 
     @RequestMapping(value="/connection_reussite")
@@ -29,12 +36,6 @@ public class AuthAPI {
     @RequestMapping(value="/connection_echoue")
     public String connection_echoue(){
         return "fail";
-    }
-
-
-    @RequestMapping(value="/whoiam")
-    public String whoIam(Authentication authentication){
-        return authentication.getName();
     }
 
     @RequestMapping(value = "/logout")

@@ -3,10 +3,6 @@ package com.findr.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import static org.springframework.security.config.Elements.PASSWORD_ENCODER;
 
 /**
  * Created by Rachid, Mohamed Yassine on 2017-03-20.
@@ -18,25 +14,27 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
-    private String sexe;
-    private String intererested;
+    private String sex;
+    private String interested;
+    private String snapchat;
     private String phone;
     private int age ;
     private String description ;
 
-    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+//    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
     private String password;
 
-    public User(String firstName, String lastName, String sexe, String intererested, String email, String phone, int age, String description, String password) {
+    public User( String firstName, String lastName, String sex, String interested,String snapchat,String email, String phone, int age, String description, String password) {
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.sexe = sexe;
-        this.intererested = intererested;
-        this.email = email;
+        this.sex = sex;
+        this.interested = interested;
+        this.snapchat = snapchat;
         this.phone = phone;
         this.age = age;
         this.description = description;
-        this.setPassword(password);
+        this.password = password;
     }
 
     public User() {
@@ -58,20 +56,28 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getSexe() {
-        return sexe;
+    public String getSex() {
+        return sex;
     }
 
-    public void setSexe(String sexe) {
-        this.sexe = sexe;
+    public void setSex(String sexe) {
+        this.sex = sexe;
     }
 
-    public String getIntererested() {
-        return intererested;
+    public String getInterested() {
+        return interested;
     }
 
-    public void setIntererested(String intererested) {
-        this.intererested = intererested;
+    public void setInterested(String interested) {
+        this.interested = interested;
+    }
+
+    public String getSnapchat() {
+        return snapchat;
+    }
+
+    public void setSnapchat(String snapchat) {
+        this.snapchat = snapchat;
     }
 
     public String getEmail() {
@@ -111,6 +117,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = PASSWORD_ENCODER.encode(password);
+//        this.password = PASSWORD_ENCODER.encode(password);
+        this.password = password;
     }
 }
