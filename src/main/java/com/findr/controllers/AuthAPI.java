@@ -1,7 +1,5 @@
 package com.findr.controllers;
 
-
-
 import com.findr.model.User;
 import com.findr.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -97,6 +97,10 @@ public class UserAPI {
                 new User("Jerry", "Gayy", "M", "F","jerry3876", "pro-choice@gmail.com", "514 234 5423",
                         "26", "Looking for nice men", "Gotomiko"
                 ));
+        users.add(
+                new User("Francois", "Map", "M", "F","caca03876", "FrancoisSamere@hotmail.com", "432 432 4423",
+                        "25", "Looking for nice girl", "wasd"
+                ));
 
         userRepo.save(users);
 
