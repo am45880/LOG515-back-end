@@ -20,19 +20,38 @@ public class UserAPI {
     @Autowired
     private UserRepo userRepo;
 
-    @RequestMapping(value="/new",method = RequestMethod.POST)
-    public void insertNewUser(@ModelAttribute User user){
-        userRepo.save(user);
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public User getUserByName(@RequestParam String email){
         return userRepo.findByEmail(email);
     }
 
+//************************************     Frontend Features  *****************************************
+    @RequestMapping(value="/new",method = RequestMethod.POST)
+    public void insertNewUser(@ModelAttribute User user){
+        userRepo.save(user);
+    }
+
+    @RequestMapping(value = "/edit_profil", method= RequestMethod.POST)
+    public void editProfil(@RequestParam String email,@RequestParam String description,@RequestParam String phone, @RequestParam String snapchat){
+       User user = userRepo.findByEmail(email);
+       user.setDescription(description);
+       user.setPhone(phone);
+       user.setPhone(snapchat);
+       userRepo.save(user);
+    }
+
+    @RequestMapping(value = "/edit_personnal_info", method= RequestMethod.POST)
+    public void editPersonnalInfo(@RequestParam String email,@RequestParam String firstName,@RequestParam String lastName, @RequestParam String phone,@RequestParam String age){
+        User user = userRepo.findByEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPhone(phone);
+        user.setAge(age);
+        userRepo.save(user);
+    }
 
 
-//************************************    Control of all the data **************************************
+//************************************    Control of all the data  **************************************
     @RequestMapping("/all")
     public List<User> getAll(){
         return userRepo.findAll();
