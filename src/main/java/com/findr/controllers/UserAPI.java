@@ -14,13 +14,14 @@ import java.util.List;
  * Created by Yassine on 2017-03-24.
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/user")
 public class UserAPI {
 
     @Autowired
     private UserRepo userRepo;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     public User getUserByName(@RequestParam String email){
         return userRepo.findByEmail(email);
     }
@@ -48,6 +49,13 @@ public class UserAPI {
         user.setPhone(phone);
         user.setAge(age);
         userRepo.save(user);
+    }
+
+    @RequestMapping(value="/change_password",method = RequestMethod.POST)
+    public void changePassword(@RequestParam String email,@RequestParam String password){
+        User user = this.userRepo.findByEmail(email);
+        user.setPassword(password);
+        this.userRepo.save(user);
     }
 
 
